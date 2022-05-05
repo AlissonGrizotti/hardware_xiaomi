@@ -7,6 +7,9 @@
 
 #pragma once
 
+#ifndef ANDROID_INCLUDE_HARDWARE_FINGERPRINT_H
+#define ANDROID_INCLUDE_HARDWARE_FINGERPRINT_H
+
 #include <hardware/hardware.h>
 #include <hardware/hw_auth_token.h>
 
@@ -250,11 +253,6 @@ typedef struct fingerprint_device {
      */
     int (*authenticate)(struct fingerprint_device *dev, uint64_t operation_id, uint32_t gid);
 
-    /*
-     * Xiaomi fingerprint extension command.
-     */
-    int (*extCmd)(struct fingerprint_device* dev, int32_t cmd, int32_t param);
-
     /* Reserved for backward binary compatibility */
     void *reserved[4];
 } fingerprint_device_t;
@@ -268,3 +266,5 @@ typedef struct fingerprint_module {
      */
     struct hw_module_t common;
 } fingerprint_module_t;
+
+#endif  /* ANDROID_INCLUDE_HARDWARE_FINGERPRINT_H */
